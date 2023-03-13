@@ -16,6 +16,9 @@
     label {font-weight: bolder;font-style: italic; text-decoration: underline; color: black; }
     h2{font-weight: bolder  }
     b {color:black;}
+    #content { display: inline-block;}
+    #read-more { }
+    
     
     
     </style>
@@ -72,6 +75,35 @@ QUỐC PHÒNG 3 này. Và HY VỌNG rằng thông qua trang wep này có thể g
 
 <!-- -->
 <h2 id="b" >III. Các động tác cá nhân về súng  </h2>
+<div id="content">
+    <p>Động tác giá súng</p>
+    <p class="more">Đây là phần nội dung được ẩn đi. Nhấp vào nút "Đọc thêm" để xem. giá súng có nhiều loại </p>
+  </div>
+  <button id="read-more">Đọc thêm</button>
+
+<!-- JavaScript  -->
+<script>
+    const moreText = document.querySelector('.more');
+const btnText = document.querySelector('#read-more');
+const isExpanded = sessionStorage.getItem('isExpanded') === 'true';
+if (isExpanded) {
+        moreText.style.display = 'block';
+        btnText.textContent = 'Rút gọn';
+      }
+      
+      btnText.addEventListener('click', function() {
+        if (moreText.style.display === 'none') {
+          moreText.style.display = 'block';
+          btnText.textContent = 'Rút gọn';
+          sessionStorage.setItem('isExpanded', 'true');
+        } else {
+          moreText.style.display = 'none';
+          btnText.textContent = 'Đọc thêm';
+          sessionStorage.removeItem('isExpanded');
+        }
+      });
+   
+  </script>
 
 
 <p style= "text-align: right;  font-size:20px "  > <i>Cre wep by <a href="https://www.facebook.com/giaan.phan.7927408"; id ="c">PGA</a>  </i> </p>
