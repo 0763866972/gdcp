@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trang web của tôi</title>
+    <style>
+      #read-more {
+        white-space: nowrap;
+        
+      }
+    </style>
+  </head>
+  <body>
+    <p>Đây là phần nội dung ban đầu của trang web.</p>
+    <p class="more" style="display: none;">Đây là phần nội dung được ẩn đi. Nhấp vào nút "Đọc thêm" để xem.</p>
+    <button id="read-more">Đọc thêm</button>
+    <script>
+      const moreText = document.querySelector('.more');
+      const btnText = document.querySelector('#read-more');
+      
+      // Lấy trạng thái của phần nội dung từ Session Storage
+      const isExpanded = sessionStorage.getItem('isExpanded') === 'true';
+      
+      // Nếu phần nội dung đã được mở, hiển thị nó
+      if (isExpanded) {
+        moreText.style.display = 'block';
+        btnText.textContent = 'Rút gọn';
+      }
+      
+      btnText.addEventListener('click', function() {
+        if (moreText.style.display === 'none') {
+          moreText.style.display = 'block';
+          btnText.textContent = 'Rút gọn';
+          // Lưu trạng thái của phần nội dung vào Session Storage
+          sessionStorage.setItem('isExpanded', 'true');
+        } else {
+          moreText.style.display = 'none';
+          btnText.textContent = 'Đọc thêm';
+          // Xóa trạng thái của phần nội dung khỏi Session Storage
+          sessionStorage.removeItem('isExpanded');
+
+        }
+      });
+    </script>
+  </body>
+</html>
